@@ -1,0 +1,26 @@
+<center><a href={% url 'home' %}>HOME PAGE</a></center>
+{% if access != True %}
+<h2>access denied</h2>
+{% else %}
+<h1>STUDENTS' COUNCIL OBSERVATORY AREA</h1>
+<hr>
+{% for comp in comps %}
+{% if comp.acceptable != False and comp.acceptable != True %}
+
+<form action=''  method='POST'>
+{% csrf_token %}
+Topic: <h3>{{comp.about}}</h3>
+Complaint: <p>{{comp.actual}}</p>
+{% if comp.anonyomous == True %}
+By: <p>Anonymous</p>
+{% else %}
+By: <p>{{comp.complainer}}</p>
+{% endif %}
+When: <p>{{comp.created}}</P>
+{{decision.as_p}}
+<button name='id' value={{comp.id}}>Submit</button>
+<hr>
+</form>
+{% endif %}
+{% endfor %}
+{% endif %}

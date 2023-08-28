@@ -1,0 +1,13 @@
+<center><a href={% url 'home' %}>HOME PAGE</a></center>
+{% if user.is_authenticated %}
+<center><h1>ADD COMPLAINT</h1></center>
+<hr>
+<form action='' method='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <hr>
+    <input type='submit'/>
+</form>
+{% else %}
+<p>Please <a href='register'>register</a> and or <a href='login'>login</a></p>
+{% endif %}

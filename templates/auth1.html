@@ -1,0 +1,14 @@
+<center><a href={% url 'home' %}>HOME PAGE</a></center>
+<center><h1>AUTHORIZATION FOR STUDENTS' COUNCIL</h1></center>
+<hr>
+<form action='' method='POST'>
+    {% csrf_token %}
+    <label for='username'>username: </label>
+    <input type='text' name = 'username'/><br><hr>
+    
+    <label for='code'>password: </label>
+    <input type='password' name='code'/><hr>
+
+    <input type='submit'/>
+</form>
+{{incor}}

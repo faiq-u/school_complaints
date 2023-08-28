@@ -1,0 +1,16 @@
+<center><a href={% url 'home' %}>HOME PAGE</a></center>
+<h1>LOG IN</h1>
+{% for message in messages %}
+<h5 style='color:red;' >{{message}}</h5>
+{% endfor %}
+<form method='Post' action=''>
+    {% csrf_token %}
+    <legend>
+    <label for='username'>username: </label> <input type='text' name='username'/><hr>
+    </legend>
+    <legend>
+    <label for='password'>password: </label> <input type='text' name='password'/><hr>
+    </legend>
+    <legend>
+    <input type='submit'/>
+</form>

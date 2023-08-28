@@ -1,0 +1,30 @@
+<center><a href={% url 'home' %}>HOME PAGE</a></center>
+<center><h1>EGS COMPLAINTS CENTER</h1></center>
+<hr>
+{% if user.is_authenticated != True%}
+<center><p>In order to submit complaints you need to <a href='register'>register</a> and <a href='login'>log in</a>.</p></center>
+{% else %}
+<center><p>Welcome, {{user.username}} </p></center>
+{% endif %}
+<hr><br>
+<form action='add_comp'>
+    <center><button>add complaint</button></center>(registered students only)
+</form>
+<hr>
+<form action='auth1'>
+    <center><button>view complaints</button></center>(students' council only)
+</form>
+<hr>
+<form action = 'auth2'>
+    <center><button>view complaints</button></center>(prinicipal and coordinator only)
+</form>
+<hr>
+Currently present complaints (to be solved): {{tot}}
+<hr>
+
+{% if user.is_authenticated %}
+<form action='' method='POST'>
+{% csrf_token %}
+<center><button name='logout'>logout</button></center>
+</form>
+{% endif %}

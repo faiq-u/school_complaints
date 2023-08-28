@@ -1,0 +1,28 @@
+<center><a href={% url 'home' %}>HOME PAGE</a></center>
+{% if access != True %}
+<h2>access denied</h2>
+{% else %}
+<h1>PRINCIPAL AND CORDINATORS' OBSERVATORY AREA</h1>
+<hr>
+{% for comp in comps %}
+{% if comp.acceptable == True %}
+{% if comp.rejected1 != True and comp.fixed != True %}
+<form action=''  method='POST'>
+{% csrf_token %}
+Topic: <h3>{{comp.about}}</h3>
+Complaint: <p>{{comp.actual}}</p>
+{% if comp.anonyomous == True %}
+By: <p>Anonymous</p>
+{% else %}
+By: <p>{{comp.complainer}}</p>
+{% endif %}
+When: <p>{{comp.created}}</P>
+{{decision.as_p}}
+
+<button name='id' value={{comp.id}}>Submit</button>
+<hr>
+</form>
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
